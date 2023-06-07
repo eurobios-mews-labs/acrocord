@@ -1,0 +1,15 @@
+pytest>=7.1
+coverage
+pytest-cov>3.0.0
+pre-commit>2
+coverage>6.4
+coverage-badge
+pylint
+pylint-exit
+anybadge
+asyncpg
+pytest-asyncio
+sphinx
+furo
+m2r
+pre-commit
