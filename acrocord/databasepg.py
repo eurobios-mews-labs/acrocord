@@ -491,10 +491,6 @@ class ConnectDatabase(object):
         df_type = pd.DataFrame(
             ret,
             columns=["data_type", "column_name"])
-        if format == "record":
-            df_type = pd.DataFrame(
-                df_type.set_index("column_name")).T.to_dict(
-                orient="record")[0]
         return df_type
 
     def get_columns(self, table_name: str) -> list:

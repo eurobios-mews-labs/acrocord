@@ -13,3 +13,4 @@ sphinx
 furo
 m2r
 pre-commit
+pytest-postgresql
