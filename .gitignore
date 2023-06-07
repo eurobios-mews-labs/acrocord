@@ -1,0 +1,8 @@
+
+.idea/
+
+__pycache__/
+build/
+pypgsql.egg-info/
+venv
+*.pyc
