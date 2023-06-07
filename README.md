@@ -2,10 +2,7 @@
 <img src="./_static/acrocord_logo.png" width="350"/>
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![pre-commit](_static/coverage.svg)](_static/coverage.svg)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
-[![pre-commit](_static/pylint.svg)](_static/pylint.svg)
-[![dpapi: version](https://img.shields.io/badge/DBAPI-2.0-blue)](https://peps.python.org/pep-0249/)
 
 A python API for managing postgresql database
 ## Install and setup
@@ -19,7 +16,7 @@ To install the package
 ```shell
 python3 -m pip install git+https://gitlab.eurobios.com/vlaurent/pypgsql
 ```
- 
+
 *use python in the proper environment e.g. in conda powershell*
 
 
