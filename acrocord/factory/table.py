@@ -378,7 +378,10 @@ class TableFactory(ABC):
         if save:
             if verbose:
                 print("save excel...", end='')
-            writer.save()
+            if hasattr(writer, "save"):
+                writer.save()
+            else:
+                writer._save()
             if verbose:
                 print(
                     f"ok -> {colored(full_path, 'blue', attrs=['underline'])}")
