@@ -37,8 +37,9 @@ def data_type(data: pd.DataFrame, columns: Iterable[str],
 
 def eligible_data_type(data: pd.DataFrame):
     result = data.dtypes
-    for column, type_ in result.iteritems():
-        msg = f'The type of the column {column} is {type_} which is not an eligible type.'
+    for column, type_ in result.items():
+        msg = f'The type of the column {column} is {type_} ' \
+              f'which is not an eligible type.'
         assert type_ in EligibleDataType.get_list(), msg
 
 

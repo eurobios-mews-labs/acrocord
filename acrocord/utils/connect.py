@@ -96,7 +96,6 @@ def connect_psql_server(username=getpass.getuser(), async_=False, **kwargs):
     sql_cmd += str(connection_param["port"]) + '/' + connection_param["dbname"]
     if async_:
         return connect_async(sql_cmd)
-    print(sql_cmd)
     return create_engine(sql_cmd, connect_args=connect_args)
 
 

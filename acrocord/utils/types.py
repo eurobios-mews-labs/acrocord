@@ -71,7 +71,7 @@ class EligibleDataType:
 
 
 def warning_type(dataframe: pd.DataFrame, verbose: int):
-    for column, column_type in dataframe.dtypes.iteritems():
+    for column, column_type in dataframe.dtypes.items():
         if verbose == 2:
             if str(column_type) not in EligibleDataType.get_list():
                 return warnings.warn(
