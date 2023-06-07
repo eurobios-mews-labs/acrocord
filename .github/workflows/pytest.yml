@@ -32,13 +32,28 @@ jobs:
         pip install -r requirements_dev.txt
         pip install -r requirements.txt
         
-    - name: Analysing the code with pylint
+    - name: Analysing the code with pytest
       run: |
         pytest --cov
+         coverage report -m
     - name: Creating coverage folder
       run: |
         mkdir -p coverage
     - name: Coverage Bagdge
       uses: tj-actions/coverage-badge-py@v1.8
       with:
-        output: coverage/coverage.svg
+        output: coverage.svg
+    - name: Commit files
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
+      run: |
+       git config --local user.email "github-actions[bot]@users.noreply.github.com"
+       git config --local user.name "github-actions[bot]"
+       git add coverage.svg
+       git commit -m "Updated coverage.svg"
+
+    - name: Push changes
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.github_token }}
+        branch: ${{ github.ref }}
