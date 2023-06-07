@@ -2,7 +2,10 @@
 <img src="./_static/acrocord_logo.png" width="350"/>
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![pre-commit](_static/coverage.svg)](_static/coverage.svg)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
+[![pre-commit](_static/pylint.svg)](_static/pylint.svg)
+[![dpapi: version](https://img.shields.io/badge/DBAPI-2.0-blue)](https://peps.python.org/pep-0249/)
 
 A python API for managing postgresql database
 ## Install and setup
@@ -95,13 +98,7 @@ db.read_table("SCHEMA.NAME")
 * **[Deploy database](doc/database_deployment.md)**: install postresgql server and create database on premise 
 * **[Manage spatial data using postgis](doc/postgis.md)**: how to install postgis and manipulate spatial data
 
-
-
-#### Contribute
-
-* see **[how to contribute](CONTRIBUTING.md)**
-
 #### Author
-- Eurobios SA
+- Eurobios
 
 <img src="./_static/logo_escb.png" width="100"/>
