@@ -39,12 +39,16 @@ jobs:
     - name: Creating coverage folder
       run: |
         mkdir -p coverage
-    - name: Coverage Bagdge
-      uses: tj-actions/coverage-badge-py@v1.8
+    - name: Coverage Badge
+      uses: tj-actions/coverage-badge-py@v2
+
+    - name: Verify Changed files
+      uses: tj-actions/verify-changed-files@v14
+      id: verify-changed-files
       with:
-        output: coverage.svg
+         files: coverage.svg
     - name: Commit files
-      # if: steps.verify-changed-files.outputs.files_changed == 'true'
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
       run: |
        git config --local user.email "github-actions[bot]@users.noreply.github.com"
        git config --local user.name "github-actions[bot]"
@@ -52,7 +56,7 @@ jobs:
        git commit -m "Updated coverage.svg"
 
     - name: Push changes
-      # if: steps.verify-changed-files.outputs.files_changed == 'true'
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.github_token }}
