@@ -1,0 +1,10 @@
+psycopg2>2.9
+numpy
+pandas >=1.0
+sqlalchemy>2
+memory_profiler
+termcolor >= 1.0
+xlsxwriter >= 3.0.3
+geopandas==0.10.2
+geoalchemy2==0.12.5
+asyncpg
