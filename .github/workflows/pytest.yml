@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestœ
     strategy:
       matrix:
         python-version: ["3.8"]
@@ -34,4 +34,11 @@ jobs:
         
     - name: Analysing the code with pylint
       run: |
-        pytest 
+        pytest --cov
+    - name: Creating coverage folder
+      run: |
+        mkdir -p coverage
+    - name: Coverage Bagdge
+      uses: tj-actions/coverage-badge-py@v1.8
+      with:
+        output: coverage/coverage.svg
