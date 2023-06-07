@@ -15,7 +15,7 @@ sudo apt install python3-dev libpq-dev unixodbc-dev
 To install the package
 
 ```shell
-python3 -m pip install git+https://gitlab.eurobios.com/vlaurent/pypgsql
+python3 -m pip install git+https://github.com/eurobios-scb/acrocord
 ```
 
 *use python in the proper environment e.g. in conda powershell*
