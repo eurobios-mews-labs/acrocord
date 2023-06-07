@@ -3,7 +3,7 @@ name: Pytest
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths-ignore:
       # Do not run if only the documentation has been changed
       - 'docs/**'
