@@ -24,8 +24,8 @@ For small contributions (like typos) you can directly edit in using the Github w
 ### Contribution rule
 
 * Please follow the [Python Naming Conventions](https://pep8.org/#prescriptive-naming-conventions) and other [PEP8](https://pep8.org/) guidelines. Try to avoid trailing whitespaces whenever possible.
-* Fill the docstring of your functions in the [numpydoc](https://numpydoc.readthedocs.io/en/latest/) fashion
-* Test every function and name it in the most explanatory way `test_name_of_function_behaviour_tested` in the associated file 
+* Fill the docstring of your functions in the [numpydoc](https://numpydoc.readthedocs.io/en/latest/format.html) fashion
+* Test every function and name it in the most explanatory way `test_name_of_function_behaviour_tested` in the associated file in the directory `test`  
 
 ### Hide your email adress in commits
 Check the box `Keep my email adresses private` [here](https://github.com/settings/emails) and run 
