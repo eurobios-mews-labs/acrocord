@@ -24,11 +24,11 @@ For small contributions (like typos) you can directly edit in using the Github w
 ### Contribution rule
 
 * Please follow the [Python Naming Conventions](https://pep8.org/#prescriptive-naming-conventions) and other [PEP8](https://pep8.org/) guidelines. Try to avoid trailing whitespaces whenever possible.
-* Fill the docstring of your functions
+* Fill the docstring of your functions in the [numpydoc](https://numpydoc.readthedocs.io/en/latest/) fashion
 * Test every function and name it in the most explanatory way `test_name_of_function_behaviour_tested` in the associated file 
 
 ### Hide your email adress in commits
-Check the box `Keep my mail adresses private` [here](https://github.com/settings/emails) and run 
+Check the box `Keep my email adresses private` [here](https://github.com/settings/emails) and run 
 ```shell 
 git config --global user.email "<ID+username>@users.noreply.github.com"
 ```
