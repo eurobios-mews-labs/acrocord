@@ -27,7 +27,7 @@ jobs:
          fetch-depth: 0
     - name: checkout main
       run: |
-        git branch -m main
+        git checkout main
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
