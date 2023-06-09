@@ -28,6 +28,7 @@ jobs:
          pip install -r requirements_dev.txt
          pip install -r requirements.txt
          coverage run -m pytest --tb=short # This is the part where you put your own test command
+         coverage report -m
 
       - name: Coverage comment
         id: coverage_comment
