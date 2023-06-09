@@ -27,7 +27,7 @@ jobs:
          python -m pip install --upgrade pip
          pip install -r requirements_dev.txt
          pip install -r requirements.txt
-         coverage run -m pytest --tb=short
+         coverage run -m pytest
          coverage report -m
          ls -al
 
