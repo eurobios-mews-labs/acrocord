@@ -1,0 +1,9 @@
+[run]
+relative_files = true
+
+[report]
+exclude_lines:
+    pragma: no cover
+    @abstractmethod
+    if sys.platform
+
