@@ -33,8 +33,7 @@ def pass_(path="."):
 
 
 def pass_win():
-    p = getpass.win_getpass(prompt="Enter the Password:", stream=sys.stdout)
-    return p
+    return getpass.win_getpass(prompt="Enter the Password:", stream=sys.stdout)
 
 
 if __name__ == "__main__":

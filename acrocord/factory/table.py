@@ -73,7 +73,6 @@ class TableFactory(ABC):
             {'column_name': (dtype, ' description')}
 
         """
-        pass
 
     @classmethod
     @abstractmethod
@@ -99,7 +98,6 @@ class TableFactory(ABC):
         str
             the database schema name
         """
-        ...
 
     @classmethod
     def read_table(cls,
@@ -122,13 +120,14 @@ class TableFactory(ABC):
             cls.data_definition().keys()) if columns is None else columns
 
         if isinstance(connection, ConnectDatabase):
-            db = connection
+            connection_ = connection
             close_db = False
         else:
-            db = cls.get_db_connection()
+            connection_ = cls.get_db_connection()
             close_db = True
-        table = db.read_table(f'{schema_name}.{table_name}', columns=columns,
-                              where=where)
+        table = connection_.read_table(
+            f'{schema_name}.{table_name}', columns=columns,
+            where=where)
 
         # assert all columns and oly columns are retrieved
         assert table.columns.isin(columns).all() and pd.Index(columns).isin(
@@ -140,7 +139,7 @@ class TableFactory(ABC):
             table[col] = table[col].astype(dtype)
 
         if close_db:
-            db.close()
+            connection_.close()
         return table
 
     @classmethod
@@ -192,9 +191,10 @@ class TableFactory(ABC):
     def get_foreign_keys(cls) -> Dict[str, Tuple[Type['TableFactory'], str]]:
         """
         return each foreign keys to be implemented in the following format:
-        {key in current TableFactory columns (str) : (foreign table (TableFactory), foreign key (str) )}
+        {key in current TableFactory columns (str) :
+        (foreign table (TableFactory), foreign key (str) )}
         """
-        return dict()
+        return {}
 
     @classmethod
     def get_full_name(cls):
@@ -315,7 +315,7 @@ class TableFactory(ABC):
                     cprint(f"{warning_header} {col_name}: "
                            f"cannot convert {col_name} "
                            f"from {table[col_name].dtype} to {col_dtype}.",
-                           f'yellow')
+                           'yellow')
                     cprint(f"{e}", 'yellow')
                 if col_doc is None or col_doc == "":
                     cprint(warning_header +
