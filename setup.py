@@ -17,7 +17,7 @@ def parse_requirements(filename):
     return [line for line in line_iter if line and not line.startswith("#")]
 
 
-install_req = parse_requirements("requirements.txt")
+# install_req = parse_requirements("requirements.txt")
 
 setup(name='acrocord',
       version='2023.2.1',
@@ -26,7 +26,7 @@ setup(name='acrocord',
       author='Eurobios',
       author_email='contact_ost@eurobios.com',
       license='Apache-2.0',
-      install_requires=install_req,
+      # install_requires=install_req,
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False)
