@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=61.0.0"]
 build-backend = "setuptools.build_meta"
 
 
@@ -7,11 +7,10 @@ build-backend = "setuptools.build_meta"
 name = "acrocord"
 version = "2023.2.1"
 description = "Python API for PostreSQL database"
-url = 'https://github.com/eurobios-scb/acrocord'
 readme = "README.md"
 authors = [{ name = "Eurobios", email = "contact_ost@eurobios.com" }]
 license = { file = "LICENSE" }
-classifiers = [,
+classifiers = [
               "Programming Language :: Python",
               "Programming Language :: Python :: 3",
 ]
