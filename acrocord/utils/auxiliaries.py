@@ -264,7 +264,7 @@ def get_metadata(table_name: str) -> str:
         SQL Query
     """
     schema, table = table_name.split('.')
-    sql_cmd = f"""    
+    sql_cmd = f"""
         select
             table_cols.table_schema,
             table_cols.table_name,

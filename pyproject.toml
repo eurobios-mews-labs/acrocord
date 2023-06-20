@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "acrocord"
+version = "2023.2.1"
+urls = {repository = "https://github.com/eurobios-scb/acrocord"}
+description = "Python API for PostreSQL database"
+authors = [{ name = "Eurobios", email = "contact_ost@eurobios.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+              "Programming Language :: Python",
+              "Programming Language :: Python :: 3",
+]
+keywords = ["data", "database", "postgresql"]
+requires-python = ">=3.7"
+
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+            "test/",
+
+]
