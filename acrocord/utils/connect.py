@@ -23,36 +23,42 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 home = expanduser("~")
-local_path = "%s/.postgresql/" % home
+path_postgresql = f"{home}/.postgresql/"
+path_acr = f"{home}/.acrocord/"
 
 
-def load_available_connections(path=local_path):
+def load_available_connections():
     import configparser
     default = configparser.ConfigParser()
-    path_ = abspath(path)
-    dir_path = "%s/connections.cfg" % path_
-    default.read(dir_path)
-    get = default._sections
-    try:
-        _ = pd.DataFrame(get).drop("password").T
-    except:
-        pass
-    for connection in get.keys():
+
+    connection_dict = {}
+    for path in [path_acr, path_postgresql]:
+        abs_path = abspath(path)
+
+        dir_path = f"{abs_path}/connections.cfg"
+        default.read(dir_path)
+        connection_dict = {**connection_dict, **default._sections}
+
         try:
-            if get[connection]["password"] == '':
-                get[connection]["password"] = ' '
+            _ = pd.DataFrame(connection_dict).drop("password").T
         except KeyError:
             pass
-    return get
+    for connection in connection_dict.keys():
+        try:
+            if connection_dict[connection]["password"] == '':
+                connection_dict[connection]["password"] = ' '
+        except KeyError:
+            pass
+    return connection_dict
 
 
 def password_auth():
     path = os.path.abspath(__file__).replace(os.path.basename(__file__), "")
 
-    cmd = "python " + path + "getpassword.py " + local_path
+    cmd = "python " + path + "getpassword.py " + path_postgresql
 
-    if not os.path.exists(local_path):
-        os.mkdir(local_path)
+    if not os.path.exists(path_postgresql):
+        os.mkdir(path_postgresql)
     if sys.platform == "win32":
         with subprocess.Popen(cmd, shell=True,
                               stderr=subprocess.PIPE,
@@ -60,7 +66,7 @@ def password_auth():
             pass
     elif sys.platform == 'linux':
         subprocess.call(['xterm', "-e", cmd])
-    list_of_files = glob.glob(local_path + '*')
+    list_of_files = glob.glob(path_postgresql + '*')
     latest_file = max(list_of_files, key=os.path.getctime)
 
     with open(latest_file) as file:

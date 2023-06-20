@@ -34,7 +34,7 @@ LOGGER = logging.getLogger(__name__)
 logging.basicConfig(format='%(levelname)s:%(message)s')
 
 
-class ConnectDatabase(object):
+class ConnectDatabase:
     def __init__(self):
         self.username = ""
         self.engine = None
@@ -135,9 +135,9 @@ class ConnectDatabase(object):
             storage = io.StringIO()
             cursor.copy_expert(copy_sql, storage)
             storage.seek(0)
-        df = pd.read_csv(storage, true_values=["t"], false_values=["f"])
+        data_frame = pd.read_csv(storage, true_values=["t"], false_values=["f"])
 
-        return df
+        return data_frame
 
     @execution.execution_time
     def write_table(self, data: typing.Union[pd.DataFrame, "GeoDataFrame"],
@@ -312,8 +312,8 @@ class ConnectDatabase(object):
                            f"{self._get_name(table_foreign)} ({key_foreign});"
 
             auxiliaries.execute_sql_cmd(self, sql_cmd, fetch=False)
-        except exc.ProgrammingError as e:
-            print(e)
+        except exc.ProgrammingError as error:
+            print(error)
 
     # ==========================================================================
     #                          ALTER DATA
@@ -563,8 +563,8 @@ class ConnectDatabase(object):
 
         with self.engine.connect() as cursor:
             res = cursor.execute(text('SELECT * FROM pg_catalog.pg_tables'))
-            df = pd.DataFrame(res.fetchall())
-        list_ = list(set(df.iloc[:, 0]))
+            data_frame = pd.DataFrame(res.fetchall())
+        list_ = list(set(data_frame.iloc[:, 0]))
         list_ = [schema for schema in list_ if
                  "pg" not in schema and "schema" not in schema]
         return list_

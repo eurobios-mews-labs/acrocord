@@ -75,7 +75,7 @@ def warning_type(dataframe: pd.DataFrame, verbose: int):
         if verbose == 2:
             if str(column_type) not in EligibleDataType.get_list():
                 return warnings.warn(
-                    f"The types of this dataframe are not eligible types")
+                    "The types of this dataframe are not eligible types")
         if verbose > 2:
             if str(column_type) not in EligibleDataType.get_list():
                 msg = f"The type of the column {column} " \

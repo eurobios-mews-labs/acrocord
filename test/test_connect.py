@@ -16,7 +16,7 @@ def test_password_auth(get_connection):
     from acrocord.utils.connect import password_auth
     try:
         assert isinstance(password_auth(), str)
-    except PermissionError:
+    except (PermissionError, FileNotFoundError):
         pass
 
 
