@@ -15,7 +15,7 @@ sudo apt install python3-dev libpq-dev unixodbc-dev
 To install the package
 
 ```shell
-python3 -m pip install git+https://github.com/eurobios-scb/acrocord
+python3 -m pip install acrocord
 ```
 
 *use python in the proper environment e.g. in conda powershell*
