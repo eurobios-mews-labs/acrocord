@@ -34,7 +34,7 @@ class Logger:
                  column_types=None):
         """
         Initialize class logger to write log messages
-        Create new table to write logs if it has not been existed
+        Create a new table to write logs if it doesn't already exist
 
         Parameters
         ----------
