@@ -37,5 +37,3 @@ def test_write_log_other_type(get_logger: Logger, get_example_log_other_type) ->
         get_logger.write_log(get_example_log_other_type)
 
         assert str(exc_info.value) == "Input data should be type of [pd.Series, pd.DataFrame, or dict]"
-
-

@@ -151,9 +151,9 @@ class Logger:
         df_write[cols_null] = ''
 
         if 'date' in cols_write:
-            df_write['date'] = pd.to_datetime(df_write['date']).strftime("%d/%m/%Y, %H:%M:%S")
+            df_write['date'] = pd.to_datetime(df_write['date']).strftime("%Y-%m-%d %H:%M:%S")
         else:
-            df_write['date'] = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+            df_write['date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         df_write.reset_index(drop=True, inplace=True)
         self.db_connection.insert(data=df_write, table_name=self.table_name)
