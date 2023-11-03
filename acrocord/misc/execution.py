@@ -53,6 +53,8 @@ def print_(output, color="DEFAULT"):
 def execution_time(method):
     @wraps(method)
     def timed(*args, **kw):
+        if sys.platform =="win32":
+            return method(*args, **kw)
         starting_time = time.time()
         mem, result = memory_usage((method, args, kw), retval=True, timeout=200,
                                    interval=1e-7)
