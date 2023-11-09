@@ -10,7 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
-# limitations under the License.#
+# limitations under the License.
 """
 This module contains the main class to be used
 It solely contains the class ConnectDatabase
@@ -27,7 +27,7 @@ from sqlalchemy import exc, text
 from acrocord.misc import execution
 from acrocord.utils import auxiliaries
 from acrocord.utils import connect
-from acrocord.utils import insert
+from acrocord.utils import insert, cache
 from acrocord.utils.types import warning_type
 
 LOGGER = logging.getLogger(__name__)
@@ -35,16 +35,15 @@ logging.basicConfig(format='%(levelname)s:%(message)s')
 
 
 class ConnectDatabase:
-    def __init__(self):
-        self.username = ""
+    def __init__(self, cache_data=False):
         self.engine = None
         self.connection = None
         self.replace = self.rename
         self.rename_ = {}
         self.active_execution_time = False
         self.active_sql_printing = False
-        self.connections = connect.load_available_connections()
         self.verbose = 1
+        self.cache = cache_data
 
     def connect(self, verbose: int = 1,
                 connection: Union[dict, str] = None,
@@ -74,7 +73,7 @@ class ConnectDatabase:
         :obj:`ConnectDatabase`
         """
         if isinstance(connection, str):
-            connection = self.connections[connection]
+            connection = connect.load_available_connections()[connection]
 
         self.engine = connect.connect_psql_server(
             connection=connection, **kwargs.copy())
@@ -129,6 +128,12 @@ class ConnectDatabase:
         table_name = f"{self._get_schema(table_name)}.{self._get_name(table_name)}"
         query = self._select(table_name, columns=columns, where=where, **kwargs)
 
+        if self.cache:
+            data_frame = cache.read(table_name, where=where,
+                                    columns=columns, **kwargs)
+            if len(data_frame) > 0:
+                return data_frame
+
         copy_sql = f"COPY ({query}) TO STDOUT WITH CSV HEADER"
         connection = self.engine.connect()
         with connection.connection.cursor() as cursor:
@@ -137,6 +142,9 @@ class ConnectDatabase:
             storage.seek(0)
         data_frame = pd.read_csv(storage, true_values=["t"], false_values=["f"])
 
+        if self.cache:
+            cache.write(data_frame, table_name,
+                        columns=columns, where=where, **kwargs)
         return data_frame
 
     @execution.execution_time

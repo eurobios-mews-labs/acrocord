@@ -29,6 +29,21 @@ def get_connection(postgresql):
     return connection
 
 
+@pytest.fixture(autouse=True)
+def get_connection_cache(postgresql):
+    db = ConnectDatabase(cache_data=True)
+    connection = db.connect(verbose=3,
+                            connection={
+                                "dbname": postgresql.info.dbname,
+                                "password": " ",
+                                "user": postgresql.info.user,
+                                "port": postgresql.info.port,
+                                "host": postgresql.info.host
+                            })
+    connection.create_schema("test")
+    return connection
+
+
 @pytest.fixture(scope="module")
 def get_example_data_frame():
     dataframe = pd.DataFrame({'a': [155, 20, 3],

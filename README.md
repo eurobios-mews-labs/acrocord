@@ -1,5 +1,5 @@
 
-<img src="./_static/acrocord_logo.png" width="350"/>
+<img src="./.static/acrocord_logo.png" width="350"/>
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
@@ -98,4 +98,4 @@ db.read_table("SCHEMA.NAME")
 #### Author
 - Eurobios
 
-<img src="./_static/logo_escb.png" width="100"/>
+<img src="./.static/logo_escb.png" width="100"/>
