@@ -13,23 +13,25 @@
 # limitations under the License.
 import os
 import os.path
-import tempfile
 
 import pandas as pd
 
-cache_folder = f'{tempfile.gettempdir()}/acrocord'
+home_directory = os.path.expanduser('~')
+
+cache_folder = f'{home_directory}/.acrocord/cache'
 cache_volume_gio = 0.5
 
 
 def name(table_name: str, columns: iter = (), where: str = '',
          limit: int = 0) -> str:
-    return f"{table_name}_{columns}_{where}_{limit}"
+    return f"{table_name}_{columns}_{where}_{limit}".replace(
+        "(", "_").replace(")", "_")
 
 
 def folder_size_gio():
     return sum(
-        os.path.getsize(f) for f in os.listdir(cache_folder) if
-        os.path.isfile(f))/1e9
+        os.path.getsize(f"{cache_folder}/{f}")
+        for f in os.listdir(cache_folder)) / 1e9
 
 
 def set_cache_folder():
@@ -55,4 +57,3 @@ def clean_cache():
     if os.path.exists(cache_folder):
         for f in os.listdir(cache_folder):
             os.remove(f"{cache_folder}/{f}")
-        os.rmdir(cache_folder)

@@ -17,11 +17,12 @@ def test_set_cache_folder_exists():
 
 def test_size_cache():
     cache.clean_cache()
-    cache.set_cache_folder()
     assert cache.folder_size_gio() == 0
+    cache.set_cache_folder()
     cache.write(pd.DataFrame(index=range(1000), columns=range(1000)), "test")
-    print(cache.folder_size_gio())
     assert cache.folder_size_gio() > 0
+    cache.clean_cache()
+    assert cache.folder_size_gio() == 0
 
 
 def test_write(
@@ -37,14 +38,15 @@ def test_write(
     get_connection_cache.read_table("main.test")
 
     start = time.time()
-    get_connection.read_table("main.test")
+    df1 = get_connection.read_table("main.test")
     end = time.time()
     t1 = end - start
 
     start = time.time()
-    get_connection_cache.read_table("main.test")
+    df2 = get_connection_cache.read_table("main.test")
     end = time.time()
 
     t2 = end - start
     assert t2 < t1
     print(t1, t2)
+    assert df1.equals(df2)
