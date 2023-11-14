@@ -96,6 +96,6 @@ db.read_table("SCHEMA.NAME")
 * **[Manage spatial data using postgis](doc/postgis.md)**: how to install postgis and manipulate spatial data
 
 #### Author
-- Eurobios
+- Eurobios Mews labs
 
 <img src="./.static/logo_escb.png" width="100"/>
