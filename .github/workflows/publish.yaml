@@ -39,7 +39,7 @@ jobs:
 
 
     permissions:
-      id-token: ${{ secrets.TEST_PYPI_TOKEN }}
+      id-token: write
 
     steps:
     - name: Download all the dists
