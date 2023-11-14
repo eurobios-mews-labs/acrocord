@@ -8,7 +8,6 @@ name = "acrocord"
 version = "2023.2.1"
 urls = {repository = "https://github.com/eurobios-scb/acrocord"}
 description = "Python API for PostreSQL database"
-long_description = "Python API for PostreSQL database"
 authors = [{ name = "Eurobios", email = "contact_ost@eurobios.com" }]
 license = { file = "LICENSE" }
 classifiers = [
