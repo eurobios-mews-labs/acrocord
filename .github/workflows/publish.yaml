@@ -32,13 +32,14 @@ jobs:
     needs:
     - build
     runs-on: ubuntu-latest
-
+  
     environment:
       name: testpypi
       url: https://test.pypi.org/p/acrocord
 
+
     permissions:
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
+      id-token: ${{ secrets.TEST_PYPI_TOKEN }}
 
     steps:
     - name: Download all the dists
