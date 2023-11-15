@@ -43,10 +43,10 @@ ssh=False
 password=PASSWORD
 ```
 
-**Note:** 
-- the `host` field does not recognize ssh alias, use ip address
-- the `port` field is typically 5432 or 5433
-- the name of the database is `dbname`
+> [!TIP]
+> - the `host` field does not recognize ssh alias, use ip address
+> - the `port` field is typically 5432 or 5433
+> - the name of the database is `dbname`
 
 Then in python the connection can directly be instantiate using the keyword `connection-name`
 
@@ -85,12 +85,11 @@ db.write_table(pd.DataFrame(1, index=[1, 2, 3], columns=[1, 2, 3]), "SCHEMA.NAME
 db.read_table("SCHEMA.NAME")
 ```
 
-#### :warning: Password and log in
-
-* If the password is trivial (for local connection), add password field to the dictionary `connection`
-* Password field can be added in `connections.cfg` file
-* If no password is provided python will open an log in window
-* No password is needed with ssl connection
+> [!CAUTION]
+> * If the password is trivial (for local connection), add password field to the dictionary `connection`
+> * Password field can be added in `connections.cfg` file
+> * If no password is provided python will open an log in window
+> * No password is needed with ssl connection
 
 #### Other topics
 
