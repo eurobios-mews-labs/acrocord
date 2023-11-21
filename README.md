@@ -5,7 +5,7 @@
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 [![pytest](https://github.com/eurobios-scb/acrocord/actions/workflows/pytest.yml/badge.svg?event=push)](https://docs.pytest.org)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/eurobios-mews-labs/acrocord/graphs/commit-activity)
-
+[![PyPI version](https://badge.fury.io/py/acrocord.svg)](https://badge.fury.io/py/acrocord)
 
 A python API for managing postgresql database
 ## Install and setup
