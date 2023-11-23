@@ -10,8 +10,9 @@ Install postgis
 
 ```shell
 sudo apt update
-sudo apt install postgis postgresql-12-postgis-3
+sudo apt install postgis postgresql-X-postgis-X
 ```
+for instance `postgresql-12-postgis-3` for ubuntu 18
 
 **On the python environment** install the plugin to connect and geopandas
 
