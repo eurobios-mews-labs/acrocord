@@ -6,7 +6,8 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and limitations under the License.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import warnings
 
@@ -136,8 +137,6 @@ def test_create_schema(get_connection, get_example_data_frame):
 #         dataframe,
 #         geometry=geopandas.points_from_xy(dataframe.lon, dataframe.lat))
 #     connection.write_table(gdf, "test.test_lat_lon")
-#
-#
 
 
 def test_list_table(get_connection):
