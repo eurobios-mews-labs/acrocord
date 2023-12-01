@@ -204,7 +204,8 @@ class ConnectDatabase:
         if "geometry" in data.dtypes.values and self.has_postgis_extension:
             if_exists_pg = "replace" if if_exists == "replace_cascade" else if_exists
             # set postgis extension in database if not already set
-
+            if if_exists == "replace_cascade":
+                self.drop_table(table_name, option="cascade")
             data.to_postgis(
                 con=self.engine,
                 name=self._get_name(table_name),
