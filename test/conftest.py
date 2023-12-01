@@ -29,6 +29,21 @@ def get_connection(postgresql):
     return connection
 
 
+@pytest.fixture(autouse=True)
+def get_connection_cache(postgresql):
+    db = ConnectDatabase(cache_data=True)
+    connection = db.connect(verbose=3,
+                            connection={
+                                "dbname": postgresql.info.dbname,
+                                "password": " ",
+                                "user": postgresql.info.user,
+                                "port": postgresql.info.port,
+                                "host": postgresql.info.host
+                            })
+    connection.create_schema("test")
+    return connection
+
+
 @pytest.fixture(scope="module")
 def get_example_data_frame():
     dataframe = pd.DataFrame({'a': [155, 20, 3],
@@ -67,3 +82,27 @@ def get_example_dataframe_building():
                                                   '28/10/2003']
                             })
     return df
+
+
+@pytest.fixture(scope="module")
+def get_example_log_dataframe():
+    dataframe = pd.DataFrame({'value': [1, 2, 3],
+                              'message': 'test log with pd.DataFrame type',
+                              'other': 'tmp',
+                              })
+    return dataframe
+
+
+@pytest.fixture(scope="module")
+def get_example_log_series():
+    return pd.Series([1, 3, 4, 5])
+
+
+@pytest.fixture(scope="module")
+def get_example_log_dict():
+    return {'value': 1, 'message': 'test log with dict type'}
+
+
+@pytest.fixture(scope="module")
+def get_example_log_other_type():
+    return [1, 2, 3]

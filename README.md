@@ -1,9 +1,11 @@
 
-<img src="./_static/acrocord_logo.png" width="350"/>
+<img src="./.static/acrocord_logo.png" width="350"/>
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 [![pytest](https://github.com/eurobios-scb/acrocord/actions/workflows/pytest.yml/badge.svg?event=push)](https://docs.pytest.org)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/eurobios-mews-labs/acrocord/graphs/commit-activity)
+[![PyPI version](https://badge.fury.io/py/acrocord.svg)](https://badge.fury.io/py/acrocord)
 
 A python API for managing postgresql database
 ## Install and setup
@@ -15,7 +17,7 @@ sudo apt install python3-dev libpq-dev unixodbc-dev
 To install the package
 
 ```shell
-python3 -m pip install git+https://github.com/eurobios-scb/acrocord
+python3 -m pip install acrocord
 ```
 
 *use python in the proper environment e.g. in conda powershell*
@@ -41,10 +43,10 @@ ssh=False
 password=PASSWORD
 ```
 
-**Note:** 
-- the `host` field does not recognize ssh alias, use ip address
-- the `port` field is typically 5432 or 5433
-- the name of the database is `dbname`
+> [!TIP]
+> - the `host` field does not recognize ssh alias, use ip address
+> - the `port` field is typically 5432 or 5433
+> - the name of the database is `dbname`
 
 Then in python the connection can directly be instantiate using the keyword `connection-name`
 
@@ -83,12 +85,11 @@ db.write_table(pd.DataFrame(1, index=[1, 2, 3], columns=[1, 2, 3]), "SCHEMA.NAME
 db.read_table("SCHEMA.NAME")
 ```
 
-#### :warning: Password and log in
-
-* If the password is trivial (for local connection), add password field to the dictionary `connection`
-* Password field can be added in `connections.cfg` file
-* If no password is provided python will open an log in window
-* No password is needed with ssl connection
+> [!CAUTION]
+> * If the password is trivial (for local connection), add password field to the dictionary `connection`
+> * Password field can be added in `connections.cfg` file
+> * If no password is provided python will open an log in window
+> * No password is needed with ssl connection
 
 #### Other topics
 
@@ -98,4 +99,4 @@ db.read_table("SCHEMA.NAME")
 #### Author
 - Eurobios
 
-<img src="./_static/logo_escb.png" width="100"/>
+<img src="./.static/logo_escb.png" width="100"/>

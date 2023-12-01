@@ -10,8 +10,9 @@ Install postgis
 
 ```shell
 sudo apt update
-sudo apt install postgis postgresql-12-postgis-3
+sudo apt install postgis postgresql-X-postgis-X
 ```
+for instance `postgresql-12-postgis-3` for ubuntu 18
 
 **On the python environment** install the plugin to connect and geopandas
 
@@ -35,7 +36,7 @@ CREATE EXTENSION postgis;
 
 ### Usage in python
 
-`pypgsql` works with `GeoPandas` to write spatial dataframe. The API is identical either a GeoPandas DataFrame 
+`acrocord` works with `GeoPandas` to write spatial dataframe. The API is identical either a GeoPandas DataFrame 
 or a classic DataFrame is provided. The user has only to create Geopandas' DataFrame in the following way
 
 ```python
@@ -53,5 +54,5 @@ gdf = geopandas.GeoDataFrame(
 db.write_table(gdf, "SCHEMA.NAME")
 ```
 
-**Note :** The writing of geopandas dataframe is note optimised the same way as pandas dataframe. 
+**Note :** The writing of geopandas dataframe is not optimised the same way as pandas dataframe. 
 For the same amount of data geopandas dataframe is excepted to take more time to be inserted in the database
