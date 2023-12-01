@@ -82,3 +82,27 @@ def get_example_dataframe_building():
                                                   '28/10/2003']
                             })
     return df
+
+
+@pytest.fixture(scope="module")
+def get_example_log_dataframe():
+    dataframe = pd.DataFrame({'value': [1, 2, 3],
+                              'message': 'test log with pd.DataFrame type',
+                              'other': 'tmp',
+                              })
+    return dataframe
+
+
+@pytest.fixture(scope="module")
+def get_example_log_series():
+    return pd.Series([1, 3, 4, 5])
+
+
+@pytest.fixture(scope="module")
+def get_example_log_dict():
+    return {'value': 1, 'message': 'test log with dict type'}
+
+
+@pytest.fixture(scope="module")
+def get_example_log_other_type():
+    return [1, 2, 3]
